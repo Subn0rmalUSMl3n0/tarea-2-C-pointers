@@ -1,19 +1,28 @@
 #ifndef H_TABLERO
 #define H_TABLERO
 
+typedef struct Barco{
+    int vivos;
+    int ** casillas;
+} Barco; // crea el tipo dato barco
+
+extern Barco barcos;
 extern void *** tablero; // extern = DECLARACION, la variable se DEFINE en otro archivo
 // triple puntero = [a][b][c], 3 dimensiones, entonces
 /*  
 ***tablero sera un arreglo de n*m casillas, con cada casilla siendo marcada por el arreglo [(x1,y1),(x1,y2),...(xn,ym)] 
 **tablero[a] sera un arreglo que dira si la casilla (xi,yj) no ha sido disparada, si fallo o si acerto, de la forma [(xi,yj)] -> [estatus]
-*tablero[a][b] seran los barcos que usen [(x1,y1),(x2,y2),...] casillas dentro del tablero, y su estado actual se vera de la forma [(xi,yj)] -> [estatus] -> [(x1,y1),(x2,y2),...], para ver si la casilla actual contiene o no un barco, y si esta o no hundido
+*tablero[a][b] seran los barcos que usen [(x1,y1),(x2,y2),...] casillas dentro del tablero, y su estado actual se vera de la forma 
+    [(xi,yj)] -> [estatus] -> [(x1,y1),(x2,y2),...], para ver si la casilla actual contiene o no un barco, y si esta o no hundido
 */
-
+extern int size, limite_turnos; //para usar size,turns
+void dificultad(int *r); // pregunta la dificultad del juego se guarda en r
 
 void inicializarTablero(int tamano); //inicializa el tablero para el tamaño que se pregunte
 void mostrarTablero(); // printea el estado actual del tablero, ' ' si no se ha disparado, 'X' si fallo, 'O' si acerto
 
-
+void generaBarcos(int u);
+int compruebaBarcos(int x, int y); //1 = TRUE, 0 = FALSE
 #endif
 
 
