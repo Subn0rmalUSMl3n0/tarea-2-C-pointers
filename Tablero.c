@@ -98,6 +98,7 @@ void creaPosBarcos(coordBarcos coordenadas[], int tamano){;
 
 void generaBarcos(int r) {
     if (r == 1) { // si esta en facil, crea 2 barcos de 1x2, 1 de 1x3, 1 de 1x4 y 1 de 1x5
+        vivos =5;
         barcos = (Barco *)malloc(5*sizeof(Barco));
 
         for (int i = 0; i < 5; i++) {
@@ -108,17 +109,6 @@ void generaBarcos(int r) {
                 exit(EXIT_FAILURE);
             }
             creaPosBarcos(barcos[i].coordenadas, barcos[i].tamano);
-        }
-
-        printf("mamaguevazo\n");
-        for(int i=0; i<5;i++){
-            printf("pinocho\n");
-            printf("%d\n",barcos[i].tamano);
-            int k = barcos[i].tamano;
-            printf("mogusdsa\n");
-            for(int j=0; j<k ;j++){
-                printf("%d %d\n",barcos[i].coordenadas[j].x,barcos[i].coordenadas[j].y);
-            }
         }
     }
     return;
@@ -140,6 +130,8 @@ void mostrarTablero() {
                 printf("!");
             } else if (*status == 4) {
                 printf("?");
+            } else if (*status == 5) {
+                printf("-");
             }
             printf("|");
         }

@@ -19,8 +19,12 @@ void * disparoGrande(int x, int y); // A = 3x3, simple = 80, grande =3, lineal =
 void * disparoLineal(int x, int y); // A = 1x5 o 5x1, preguntar si tiro es horizontal o vertical, simple 85, grande 5, lineal 2, radar 6, helldivers 2
 void * disparoRadar(int x, int y); // A = 5x5, simple 75, grande 15, lineal 5, radar 2, helldivers 3
 void * disparo500KG(int x, int y); // A = 11x11, solo se obtiene una vez (tirarle flag con malloc?), mata el cañon y no retorna nada
-
-void procesarDisparo(int x, int y, coordBarcos coordenadas); // procesa el disparo, llama a la funcion correspondiente
+void * brokenCannon(int x, int y); // no se puede disparar, solo se obtiene si se usa 500KG
+void procesarDisparo(int x, int y, int flag); // procesa el disparo, llama a la funcion correspondiente
 void preparacionesDisparo(int x, int y, int tipo); // prepara el disparo, llama a la funcion correspondiente
+void procesarBarcosEliminados(int x, int y); // procesa los barcos eliminados
+void procesarRadar(int x, int y);
 extern int size,limite_turnos, x,y; //para usar size,turns
+extern int vivos;
+
 #endif
