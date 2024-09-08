@@ -10,6 +10,7 @@ int limite_turnos; // definicion
 
 Barco barcos;
 char locaciones;
+
 void dificultad(int *r){
     printf("Seleccione la dificultad:\n 1. Facil: 11x11 casillas, 5 barcos\n 2. Medio: 17x17 casillas, 7 barcos\n 3. Dificil: 21x21 casillas, 9 barcos\n");
     printf("Ingrese un numero: ");
@@ -70,3 +71,5 @@ void mostrarTablero() {
         printf("\n");
     }
 }
+
+int compruebaBarcos(int x, int y)
