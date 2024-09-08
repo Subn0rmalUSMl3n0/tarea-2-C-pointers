@@ -1,12 +1,19 @@
 #ifndef H_TABLERO
 #define H_TABLERO
 
-typedef struct Barco{
-    int vivos;
-    int ** casillas;
-} Barco; // crea el tipo dato barco
 
-extern Barco barcos;
+typedef struct coordBarcos{
+    int x;
+    int y;
+} coordBarcos;
+extern coordBarcos coordenadas;
+
+typedef struct Barco{
+    int tamano;
+    coordBarcos *coordenadas;
+} Barco; // crea el tipo dato barco
+extern Barco *barcos;
+
 extern void *** tablero; // extern = DECLARACION, la variable se DEFINE en otro archivo
 // triple puntero = [a][b][c], 3 dimensiones, entonces
 /*  
@@ -22,7 +29,11 @@ void inicializarTablero(int tamano); //inicializa el tablero para el tamaño que
 void mostrarTablero(); // printea el estado actual del tablero, ' ' si no se ha disparado, 'X' si fallo, 'O' si acerto
 
 void generaBarcos(int u);
-int compruebaBarcos(int x, int y); //1 = TRUE, 0 = FALSE
+
+int compruebaBarcos(int x, int y, int direccion, int tamano);
+void posicionaBarcos(int x, int y, int direccion, int tamano, coordBarcos *coordenadas);
+
+void imprimirCoordenadasBarcos(Barco *coordsbarcos, int numbarcos);
 #endif
 
 

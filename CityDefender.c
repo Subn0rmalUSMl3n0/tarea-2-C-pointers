@@ -26,8 +26,8 @@ void Battleship(){
         printf("Y:");
         scanf("%d", &y);
     
-        void (*puntero_disparos)(int, int) = Cartas.carta[selected-1]; //crea una variable para que actue de invocador de la funcion de la carata elegida
-        (*puntero_disparos)(x,y); //invoca funcion de carta elegita
+        void (*puntero_disparos)(int, int) = Cartas.carta[selected-1]; //crea variable que apuntara al disparo elegido
+        (*puntero_disparos)(x-1,y-1); //invoca funcion de carta elegita
         turno +=1;
     }
     printf("Fracaso en la defensa de Po Inter City\n");

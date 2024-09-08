@@ -1,6 +1,7 @@
 #ifndef H_CARTAS
 #define H_CARTAS
 
+#include "Tablero.h"
 typedef struct Mano // empieza a definir el struct Mano
 {
     void ** carta; // **: puntero a puntero *, con *: puntero a un arreglo de 5 cartas
@@ -19,6 +20,7 @@ void * disparoLineal(int x, int y); // A = 1x5 o 5x1, preguntar si tiro es horiz
 void * disparoRadar(int x, int y); // A = 5x5, simple 75, grande 15, lineal 5, radar 2, helldivers 3
 void * disparo500KG(int x, int y); // A = 11x11, solo se obtiene una vez (tirarle flag con malloc?), mata el cañon y no retorna nada
 
-
+void procesarDisparo(int x, int y, coordBarcos coordenadas); // procesa el disparo, llama a la funcion correspondiente
+void preparacionesDisparo(int x, int y, int tipo); // prepara el disparo, llama a la funcion correspondiente
 extern int size,limite_turnos, x,y; //para usar size,turns
 #endif
