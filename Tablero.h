@@ -115,6 +115,16 @@ analiza el tablero por completo, y muestra por terminal el estado de cada casill
 */
 void mostrarTablero(); 
 
+
+/*
+***
+...
+***
+no retorna nada
+***
+al terminar la partida, analiza todo el tablero, y muestra las ubicaciones de los barcos se les haya disparado o no
+*/void mostrarTableroFinal();
+
 /*
 ***
 ...

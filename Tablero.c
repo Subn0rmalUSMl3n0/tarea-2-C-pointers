@@ -214,6 +214,29 @@ void mostrarTablero() {
     }
 }
 
+void mostrarTableroFinal(){
+    for (int i = 0; i < size; i++) { // por cada xi
+        printf("|");
+        for (int j = 0; j < size; j++) {// por cada xi,yj
+            int *status = (int *)tablero[i][j];
+            if (*status == 0) { // no se ha disparado y no hay barco
+                printf(" ");
+            } else if (*status == 1) { // impacto
+                printf("X");
+            } else if (*status == 2) { // fallo
+                printf("O");
+            } else if (*status == 3) { // el radar encotro un barco
+                printf("X");
+            } else if (*status == 4) { // hay un barco, pero no ha sido disparado ni revelado
+                printf("X");
+            } else if (*status == 5) { // el radar no encontro nada
+                printf("-");
+            }
+            printf("|");
+        }
+        printf("\n");
+    }
+}
 // libera la memoria de los structs barco y tablero
 void limpiabarcos(){
     for (int i = 0; i < 5; i++) {

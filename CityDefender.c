@@ -39,13 +39,13 @@ void Battleship(){
         // si se pudo eliminar todos los barcos en los turnos dados, se gana
         if (restantes == 0){
             printf("Victoria en la defensa de Po Inter City\nTablero:\n");
-            mostrarTablero();
+            mostrarTableroFinal();
             return;
         }
     }
     // si no se pudo eliminar todos los barcos, se pierde
     printf("Fracaso en la defensa de Po Inter City\nTablero:\n");
-    mostrarTablero();
+    mostrarTableroFinal();
     return;
 }
 
