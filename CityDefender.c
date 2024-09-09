@@ -44,7 +44,7 @@ void Battleship(){
         }
     }
     // si no se pudo eliminar todos los barcos, se pierde
-    printf("Fracaso en la defensa de Po Inter City\nTablero:\n");
+    printf("Fracaso en la defensa de Po Inter City\nTablero final:\n");
     mostrarTableroFinal();
     return;
 }

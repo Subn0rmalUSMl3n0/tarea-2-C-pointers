@@ -159,7 +159,7 @@ void preparacionesDisparo(int x, int y, int tipo){
         Disparo(x,y, 1); //procesa el centro
         for (int i = -1; i <= 1; i++) { // Itera desde -1 hasta 1 para centrar en x
             for (int j = -1; j <= 1; j++) { // Itera desde -1 hasta 1 para centrar en y
-                if (x + i >= 0 && x + i < size && y + j >= 0 && y + j < size) {
+                if (x + i >= 0 && x + i < size && y + j >= 0 && y + j < size) { // si la casilla a procesar esta dentro del tablero
                     if (i == 0 && j == 0) continue; // se salta la casilla central
                     Disparo(x + i, y + j, 2);
                 }
@@ -174,14 +174,14 @@ void preparacionesDisparo(int x, int y, int tipo){
         Disparo(x, y, 1);
         if (direccion == 2){ //vertical
             for (int i = -2; i <= 2; i++) {
-                if (x + i >= 0 && x + i < size) {
+                if (x + i >= 0 && x + i < size) { // si la casilla a procesar esta dentro del tablero
                     if (i == 0) continue; //se salta la casilla central
                     Disparo(x + i, y, 2);
                 }
             }
         } else if (direccion == 1){ //horizontal
             for (int j = -2; j <= 2; j++) {
-                if (y + j >= 0 && y + j < size) {
+                if (y + j >= 0 && y + j < size) { // si la casilla a procesar esta dentro del tablero
                     if (j == 0) continue; // se salta la casilla central
                     Disparo(x, y + j, 2);
                 }
@@ -190,7 +190,7 @@ void preparacionesDisparo(int x, int y, int tipo){
     } else if (tipo == 4){ // disparo radar
         for (int i = -2; i <= 2; i++) {
             for (int j = -2; j <= 2; j++) {
-                if (x + i >= 0 && x + i < size && y + j >= 0 && y + j < size) {
+                if (x + i >= 0 && x + i < size && y + j >= 0 && y + j < size) { // si la casilla a procesar esta dentro del tablero
                     procesarRadar(x + i, y + j);
                 }
             }
@@ -199,7 +199,7 @@ void preparacionesDisparo(int x, int y, int tipo){
         Disparo(x, y, 1);
         for (int i = -5; i <= 5; i++) {
             for (int j = -5; j <= 5; j++) {
-                if (x + i >= 0 && x + i < size && y + j >= 0 && y + j < size) {
+                if (x + i >= 0 && x + i < size && y + j >= 0 && y + j < size) { // si la casilla a procesar esta dentro del tablero
                     if (i == 0 && j == 0) continue; // se salta la casilla central
                     Disparo(x + i, y + j, 2); // Procesa las 11x11 casillas alrededor de la central
                 }

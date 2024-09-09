@@ -226,9 +226,9 @@ void mostrarTableroFinal(){
             } else if (*status == 2) { // fallo
                 printf("O");
             } else if (*status == 3) { // el radar encotro un barco
-                printf("X");
+                printf("!");
             } else if (*status == 4) { // hay un barco, pero no ha sido disparado ni revelado
-                printf("X");
+                printf("!");
             } else if (*status == 5) { // el radar no encontro nada
                 printf("-");
             }
