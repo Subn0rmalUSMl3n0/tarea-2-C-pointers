@@ -17,3 +17,5 @@ clean: #borra los archivos .o
 	rm Cartas.o
 	rm Tablero.o
 
+valgrind: Battleship.exe
+	valgrind --leak-check=full ./Battleship.exe

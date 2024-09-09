@@ -3,61 +3,69 @@
 #include "Cartas.h"
 #include "Tablero.h"
 
-extern int size, limite_turnos,u; //para usar size,turns
+extern int size, limite_turnos; //para usar size,turns
 extern Mano Cartas;
 int turno,x, y;
-int El_Prohibido = -1;
+int selected;
+
+
 
 void Battleship(){
     //int x,y;
     turno =1;
-    int selected;
+    int restantes = numbarcos;
     while (turno < limite_turnos){
         printf("Turno %d\n", turno);
         mostrarTablero();
 
         printf("Cartas:\n");
         mostrarMazo();
-
-        do{
-            printf("Seleccione una carta: ");
-            scanf("%d", &selected);
-            if (selected < 1 || selected > 5) printf("Carta no valida, por favor intente de nuevo\n");
-            if (selected-1 == El_Prohibido) printf("Carta no disponible, por favor intente de nuevo\n");
-        }while(selected < 1 || selected > 5 || El_Prohibido == selected-1);
-        do{
-            printf("Selecciona Coordenadas:\nX:");
-            scanf("%d", &x);
-            printf("Y:");
-            scanf("%d", &y);
-            if (x> size || y>size) printf("Coordenadas fuera de rango, por favor intente de nuevo\n");
-        }while (x>size || y>size);
-        void * (*puntero_disparos)(int, int) = Cartas.carta[selected-1]; //crea variable que apuntara al disparo elegido
-        Cartas.carta[selected-1] = (void *) (*puntero_disparos)(x-1,y-1); //invoca funcion de carta elegita
-        if (Cartas.carta[selected-1] == disparo500KG){
-            El_Prohibido = selected-1;
-            printf("Carta %d eliminada\n", selected-1);
-        }
+        
+        //la funcion preguntara por la carta a usar y las coordenadas a disparar
+        usarCarta();
+        
         turno +=1;
-        printf("Barcos restantes: %d\n", vivos);
-        if (vivos == 0){
-            printf("Victoria en la defensa de Po Inter City!!!!111!!!1!!!!\n");
+
+        //revisa si algun barco fue eliminado por completo, resta uno al contador de barcos vivos y cambia el estado del barco para que no se vuelva a contar
+        for (int i =0; i<numbarcos; i++){
+            if (barcos[i].vivoflag == 0){
+                printf("Barco eliminado\n");
+                restantes -=1;
+                barcos[i].vivoflag -=1;
+            }
+        }
+        
+        printf("Barcos restantes: %d\n", restantes);
+        // si se pudo eliminar todos los barcos en los turnos dados, se gana
+        if (restantes == 0){
+            printf("Victoria en la defensa de Po Inter City\nTablero:\n");
+            mostrarTablero();
             return;
         }
     }
-    printf("Fracaso en la defensa de Po Inter City\n");
-    inicializarMazo();
+    // si no se pudo eliminar todos los barcos, se pierde
+    printf("Fracaso en la defensa de Po Inter City\nTablero:\n");
+    mostrarTablero();
     return;
 }
 
 
 int main(int argc, char const *argv[])
 {
+    //logica de dificultad
     int r;
     dificultad(&r);
     printf("Dificultad: %d\n", r);
+
+    //inicializa el tablero y los barcos
     inicializarTablero(r);
     inicializarMazo();
+
+    //inicia el juego
     Battleship();
+
+    //limpia la memoria
+    limpiabarcos();
+    limpiacartas();
     return 0;
 }
