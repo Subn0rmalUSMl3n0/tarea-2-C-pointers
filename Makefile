@@ -16,6 +16,7 @@ clean: #borra los archivos .o
 	rm CityDefender.o
 	rm Cartas.o
 	rm Tablero.o
+	rm Battleship.exe
 
 valgrind: Battleship.exe
 	valgrind --leak-check=full ./Battleship.exe
